@@ -1,0 +1,123 @@
+var hello = 'hello';
+console.log(hello);
+// 型注釈
+var hasValue = true;
+// 型推論
+var hasValue2 = true;
+var count = 10;
+var float = 3.14;
+var nrgative = -0.12;
+var single = 'hello';
+var double = "hello";
+var back = "hello";
+var aa = true;
+// const person: {
+//   name: string;
+//   age: number;
+// } = {
+//   name: 'jack',
+//   age: 21
+// }
+// console.log(person.name)
+// console.log(person.age)
+var person = {
+    name: 'John',
+};
+console.log(person);
+// // 型推論 const fruits: string[]
+// const fruits = ['Apple', 'Banana', 'Grape']
+// // 型注釈
+// const fruits: string[] = ['Apple', 'Banana', 'Grape']
+// // ユニオン型 (union type) const fruits: (string | number)[]
+// const fruits = ['Apple', 'Banana', 'Grape', 1]
+// // any[]型
+// const fruits: any[] = ['Apple', 'Banana', 'Grape', 1]
+// タプル型 配列を厳密に指定
+var book = ['Apple', 1500, false];
+// ただし、pushで挿入可能
+book.push(10);
+// しかし、タプル型に指定していない要素番号にはアクセスできない ここでは0~2まで
+console.log(book[2]);
+// 列挙型
+// 明示的に文字列を書かない場合は0から始まる
+var CoffeeSize;
+(function (CoffeeSize) {
+    CoffeeSize[CoffeeSize["SHORT"] = 0] = "SHORT";
+    CoffeeSize[CoffeeSize["TALL"] = 1] = "TALL";
+    CoffeeSize[CoffeeSize["GRANDE"] = 2] = "GRANDE";
+    CoffeeSize[CoffeeSize["VENTI"] = 3] = "VENTI";
+})(CoffeeSize || (CoffeeSize = {}));
+var coffee = {
+    hot: true,
+    // CoffeeSize型になる
+    size: CoffeeSize.TALL
+};
+// CoffeeSize型にStringは入れられない
+// coffee.size = 'SHORT'
+// enumを使うと特定のまとまったデータを入れる事ができる
+coffee.size = CoffeeSize.GRANDE;
+console.log(CoffeeSize.SHORT);
+// Union型
+// 型指定の時に｜（バーティカルライン）で区切る or演算子みたいな感じ。
+var unionType = 10;
+unionType = 'hello';
+unionType.toUpperCase();
+console.log(unionType.toUpperCase());
+// リテラル型 指定した型しか入らない
+// TSではconstを使うとリテラル型になる
+var apple = 'apple';
+var clothSize1 = 'S';
+console.log(clothSize1);
+// リテラル型を使うとenumのようにある特定の値しか入れられないようにもできる
+// リテラル型のユニオンはオブジェクトではなく、例ではただの文字列になる
+var clothSize = 'S';
+// enum型よりシンプルに描けるのでリテラル型のユニオンはおすすめ
+var cloth = {
+    color: 'red',
+    size: 'L'
+};
+// 関数に型を付ける
+// function add(num1, num2) {
+//   return num1 + num2
+// }
+// // 引数の型を指定
+// function add(num1: number, num2: number) {
+//   return num1 + num2
+// }
+// 'helloはString型なのでエラーになる
+// add('hello', 10)
+// 戻り値の型を指定
+function add(num1, num2) {
+    return num1 + num2;
+}
+// 基本的に戻り値の型を指定しなくても良い＝型推論してくれるため
+// Dartで書いた場合
+// int add(int num1, int num2) {
+//   return num1 + num2;
+// }
+// // void型
+// function sayHello(): void {
+//   console.log('Hello!');
+// }
+// // undefinedで良いのでは？→undefinedは使えない
+// // returnの時はOKだが基本的にundefinedを使わなくて良い
+// function sayHello1(): undefined {
+//   console.log('Hello!');
+//   return;
+// }
+// const anotherAdd: (n1: number, n2: number) => number = add;
+// コールバック関数
+function doubleAndHandle(num, cb) {
+    var doubleNum = cb(num * 2);
+    console.log(doubleNum);
+}
+doubleAndHandle(21, function (doubleNum) {
+    return doubleNum;
+});
+// データの型のチェック
+28;
+// 何も返していないエラー
+function error(massage) {
+    throw new Error(massage);
+}
+console.log(error('This is an error'));
