@@ -1,16 +1,17 @@
+"use strict";
 var hello = 'hello';
 console.log(hello);
 // 型注釈
-var hasValue = true;
+let hasValue = true;
 // 型推論
-var hasValue2 = true;
-var count = 10;
-var float = 3.14;
-var nrgative = -0.12;
-var single = 'hello';
-var double = "hello";
-var back = "hello";
-var aa = true;
+let hasValue2 = true;
+let count = 10;
+let float = 3.14;
+let nrgative = -0.12;
+let single = 'hello';
+let double = "hello";
+let back = `hello`;
+let aa = true;
 // const person: {
 //   name: string;
 //   age: number;
@@ -20,7 +21,7 @@ var aa = true;
 // }
 // console.log(person.name)
 // console.log(person.age)
-var person = {
+const person = {
     name: 'John',
 };
 console.log(person);
@@ -33,7 +34,7 @@ console.log(person);
 // // any[]型
 // const fruits: any[] = ['Apple', 'Banana', 'Grape', 1]
 // タプル型 配列を厳密に指定
-var book = ['Apple', 1500, false];
+const book = ['Apple', 1500, false];
 // ただし、pushで挿入可能
 book.push(10);
 // しかし、タプル型に指定していない要素番号にはアクセスできない ここでは0~2まで
@@ -47,7 +48,7 @@ var CoffeeSize;
     CoffeeSize[CoffeeSize["GRANDE"] = 2] = "GRANDE";
     CoffeeSize[CoffeeSize["VENTI"] = 3] = "VENTI";
 })(CoffeeSize || (CoffeeSize = {}));
-var coffee = {
+const coffee = {
     hot: true,
     // CoffeeSize型になる
     size: CoffeeSize.TALL
@@ -59,20 +60,20 @@ coffee.size = CoffeeSize.GRANDE;
 console.log(CoffeeSize.SHORT);
 // Union型
 // 型指定の時に｜（バーティカルライン）で区切る or演算子みたいな感じ。
-var unionType = 10;
+let unionType = 10;
 unionType = 'hello';
 unionType.toUpperCase();
 console.log(unionType.toUpperCase());
 // リテラル型 指定した型しか入らない
 // TSではconstを使うとリテラル型になる
-var apple = 'apple';
-var clothSize1 = 'S';
+const apple = 'apple';
+let clothSize1 = 'S';
 console.log(clothSize1);
 // リテラル型を使うとenumのようにある特定の値しか入れられないようにもできる
 // リテラル型のユニオンはオブジェクトではなく、例ではただの文字列になる
-var clothSize = 'S';
+let clothSize = 'S';
 // enum型よりシンプルに描けるのでリテラル型のユニオンはおすすめ
-var cloth = {
+const cloth = {
     color: 'red',
     size: 'L'
 };
@@ -108,10 +109,10 @@ function add(num1, num2) {
 // const anotherAdd: (n1: number, n2: number) => number = add;
 // コールバック関数
 function doubleAndHandle(num, cb) {
-    var doubleNum = cb(num * 2);
+    const doubleNum = cb(num * 2);
     console.log(doubleNum);
 }
-doubleAndHandle(21, function (doubleNum) {
+doubleAndHandle(21, doubleNum => {
     return doubleNum;
 });
 // データの型のチェック
