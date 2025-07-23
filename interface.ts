@@ -1,11 +1,22 @@
-// タイプエイリアス
-// type Human = {
-//   name: string;
-//   age: number;
-// }
+// 通常の関数の表現（基本的にこちらで表現した方が良いが、interfaceでも表現できる）
+// type addFunc = (num1: number, num2: number) => number;
+
+// interfaceで関数の型を表現
+interface addFunc {
+  (num1: number, num2: number): number;
+}
+
+let addFunc: addFunc;
+addFunc = (n1: number, n2: number) => {
+  return n1+ n2;
+}
+
+type Nameable = {
+  name: string;
+}
 
 // interface
-interface Human {
+interface Human extends Nameable {
   name: string;
   age: number;
   // greeting: (message: string) => void;
